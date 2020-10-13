@@ -1,0 +1,17 @@
+//SQL
+spring.datasource.platform=postgres
+spring.datasource.url=jdbc:postgresql://localhost:5432/postgres?serverTimezone=UTC
+spring.datasource.username=postgres
+spring.datasource.password=root
+
+//JPA
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+
+
+comandos postgre sql
+; - botam isso no final de cada comando
+\c database - acessar database
+\l -> lista todas as databases
+\dt -> lista todas as tabelas da database
