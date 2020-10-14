@@ -1,8 +1,8 @@
 Para o cadastro do Autor fiz o seguinte:
 
-- Criei uma classe Autor (marcada com a annotation @Entity, para que a mesma possa ser persistida e através do JPA os seus
-atributos sejam transformados em colunas no banco) com os atributos de id (com chave primária), 
-nome, email, descrição e instante da criação, e seus getters;
+- Criei uma classe Autor (marcada com a annotation @Entity, para que a mesma possa ser persistida e através do Hibernate esta e 
+os seus atributos sejam transformados em tabela e colunas, respectivamente, no banco) com os atributos de id (com chave primária), 
+nome, email, descrição e instante da criação;
 
 - Outra classe chamada NovoAutorRequest sendo que esta, utilizei para receber os valores da requisição
 e naõ expor a entidade Autor a receber os dados diretamente. Fiz um método chamado toModel do tipo Autor para retornar um objeto 

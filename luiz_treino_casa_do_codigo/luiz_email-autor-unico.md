@@ -8,18 +8,25 @@ Seguindo tal especificação tive que criar uma criei uma interface de nome Uniq
 e definir os atributos message (mensagem que irá aparecer ao usuário final em caso de erro), groups e payload. 
 
 Na interface definir as annotations:
-@Documented
-@Constraint(validatedBy = {UniqueValueValidator.class}) - qual classe irá ser chamada para validar o dado
-@Target({FIELD}) - a validação será feita no campo de dado a ser inserido
-@Retention(RUNTIME) - a validação ocorrerá em tempo de execução
+ - @Documented - (opicional, define que essa annotation ao ser usada irá gerar um JavaDoc, que é um gerador de documentação 
+	que irá exibir algumas informações sobre o que está sendo usado);
+ - @Constraint(validatedBy = {UniqueValueValidator.class}) - qual classe irá ser chamada para validar o dado;
+ - @Target({FIELD}) - a validação será feita no campo de dado a ser inserido;
+ - @Retention(RUNTIME) - a validação ocorrerá em tempo de execução.
 
-Defini dois atributos do tipo String nomeDoCampo e um do tipo Classe nomeDaClasse;
+Defini dois atributos do tipo String nomeDoCampo e um do tipo Classe nomeDaClasse.
 
 Como dito a classe que efetivamente fará a validação será a UniqueValueValidator. Esta deve implementar a interface ConstraintValidator
-e utlizar seus métodos que são initialize (que recebe um objeto do tipo UniqueValue, e pode inicializar atributos) e isValid (que recebe
-o dado a validar um contexto que retorna, e um bolean para indicar se a operação é válida ou não). Nesse ultimo metodo é feita uma busca
-no banco pelo campo email e armazenada em um objeto do tipo Query. Aí com a combinação dos métodos query.getResultList().isEmpty 
-é devolvido um boolean.
+e utlizar seus métodos que são:
+ - initialize (que recebe um objeto do tipo UniqueValue, e pode inicializar atributos) e 
+ - isValid (que recebe o dado a validar um contexto que retorna, e um bolean para indicar se a operação é válida ou não). 
+Nesse ultimo metodo é feita uma busca no banco pelo campo email e armazenada em um objeto do tipo Query. 
+Aí com a combinação dos métodos getResultList().isEmpty é devolvido um boolean.
+
+Importante resaltar que essa e as outras validações com annotations nativas 
+só irão funcionar caso a informação recebida pelo controller sejá marcada com o @Valid, dessa forma caso ocorra um erro a exceção
+MethodArgumentNotValidException será disparada, informando o que ocorreu.
+
 
 
 
