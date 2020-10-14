@@ -10,8 +10,9 @@ A necessidade por criar essa duas classe se dá por não ser necessário exibir 
 para não permitir que a mesma exiba dados diretamente (através do seus gets que serão necessário para que o Jackson os exiba em formato
 JSON), seguindo o princípio de proteger a todo custo as "Bordas" da aplicação;
 
-- Um controller chamado LivroListaController que através de um id do livro será exibida suas informações. Para insesir essa informação,
-optei por recebe-la diretamente na URL e para fazer isso é necessário que o endereço da requisição tenha a seguinte estrutura:
+- utilizei o LivroListaController com outro método GET que nesse caso, através de um id do livro será exibida suas informações. 
+Para insesir essa informação, optei por recebe-la diretamente na URL e para fazer isso é necessário que o endereço da requisição 
+tenha a seguinte estrutura:
 localhost:8080/{"nome do campo a receber o dado"}, e a annotation @PathVariable("nome do campo") a esquerda do campo que receberá 
 a informação.
 Em seguida realizei uma busca no banco de acordo com a entidade e o id do livro com o método .find(Class.class, Obejct Primary Key).
