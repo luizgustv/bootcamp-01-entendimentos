@@ -1,16 +1,14 @@
 Deve - se criar um novo usuário:
+
 Foram criadas as classes:
 - Usuario com os atributos id, login (formato email), senha e instante de criação (localdatetime);
 - NovoUsuarioRequest para receber os dados referente a entidade Usuario;
 - e UsuarioController para permitir o recebimento de requisições.
 
-A senha ao ser recebida deve ser encriptada com um algoritmo hash
+A senha ao ser recebida deve ser encriptada com um algoritmo hash.
 
 Existem vários diponíveis, até onde pesquisei os mais "seguros" (afinal, nenhum algoritmo é impassível de ser quebrado)
 são PBKDF2, BCrypt, and SCrypt.
-
-https://medium.com/@Lunes_Pt/criptografia-como-funciona-pt-2-bd315391b2db
-https://www.baeldung.com/java-password-hashing
 
 Para essa situação, optei pelo BCrypt, que é um dos mais utilizados atualmente e é de fácil implementação.
 
@@ -26,6 +24,24 @@ extendendo a classe WebSecurityConfigurerAdapter para poder reescrever o seu met
                 .anyRequest().permitAll() //permite todas as requisições
                 .and()
                 .httpBasic(); //autenticação basica http
+
+Opcionalmente para que as configurações nem sejam iniciadas, podemos no arquivo main onde temos a annotation @SpringBootApplication
+colocar a opção: @SpringBootApplication(exclude = {SecurityAutoConfiguration.class}). Dessa forma, quando a aplicação for iniciada
+essa classe de configuração não será executada.
+
+Obs.: @SpringBootApplication é uma annotation que é equivalente ao uso dessa outras três em suas configurações padrão:
+ - @Configuration: usado para classes que contêm métodos anotados com @Bean. Dessa forma o Spring sabe que deverá gerenciar o ciclo de 
+vida do objeto gerado pelo retorno desses métodos, e dessa forma, permitir que outras classes o utilizem como depedência. 
+Assim, é possível utilizar um objeto sem uma construção como:
+Objeto obj = new Objeto();
+E sim:
+@Autowired
+Objeto obj;
+ - @ComponentScan: procura por Componentes Spring (@Configuration, @Controller,@Services, entre outros);
+ - @EnableAutoConfiguration: permite que o Spring configure automaticamente o projeto com base nas dependências jar adicionadas. 
+Por exemplo, se o projeto possui a dependência spring-starter-web, o Spring irá auto-configurar o Tomcat e o Spring MVC;
+
+
 
 
 
