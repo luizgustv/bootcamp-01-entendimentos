@@ -5,6 +5,3 @@ por um ponto (ex: token).
 
 https://www.treinaweb.com.br/blog/implementando-autenticacao-baseada-em-jwt-em-uma-api-restful-jax-rs/
 https://swagger.io/docs/specification/authentication/bearer-authentication/
-
-
-No da criação do Usuário e da Categoria, eu só preciso retornar o status 201 certo?
