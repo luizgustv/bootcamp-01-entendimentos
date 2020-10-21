@@ -5,22 +5,11 @@ id
 nome - obrigatorio e unico
 nome categoria mae - opicional e caso tenha deve estar no banco
 
-NovaCategoriaRequest
+No cadastro de categoria, como dito, uma categoria pode não ter nenhuma relação mas se tiver, esta deve estar no banco.
+Para a construção da funcionalidade, fiz as seguintes classes:
 
-CategoriaController
-
-self join com @ManyToOne
-
-
-Before Java 8, programmers would return null instead of Optional. There were a 
-few shortcomings with this approach. One was that there wasn’t a clear way to express that null might be a special value. 
-By contrast, returning an Optional is a clear statement in the API that there might not be a value in there. 
-If we wanted to make sure that we won't get a null pointer exception, then we would need to do explicit null 
-check for each reference, as shown below, and we all agree that’s a lot of boilerplate.
-
-
-Pergunta:
-Na categoria do eccomerce, a categoria pode deve ter um nome e pode ter uma categoria mae
-No caso, caso a categoria mae n estiver no banco eu devo cadastra-la antes, certo? 
-Ou seja cadastrar uma categoria sem categoria mae?
+- CategoriaController: para receber a requisição POST;
+- NovaCategoriaRequest: objeto que recebe os dados da requisição;
+- Categoria: será a entidade. Como e os dados de NovaCategoriaRequest serão convertidos em um objeto do tipo Categoria. Para isso em NovaCategoriaRequest possui um método que recebe um objeto do tipo EntityManager para buscar uma categoria com base no id. Uma categoria pode ter um nome e sua "mãe" (o atributo foi chamado de categoriaMae), sendo esta um dado opicional. Como ela pode ser nula, utilizo o Optional para verificar isso e caso exista realizo uma busca no banco e preencho a categoria com o dado encontrado e retorno o objeto.
+Para representar essa relação na tabela, o atributo categoriaMae é do tipo Categoria, anotado com @ManyToOne. Essa forma quando a tabela for gerada, heverá como coluna o seu id, nome e categoriaMae;
 
