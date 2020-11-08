@@ -1,0 +1,3 @@
+Detalhar propostas
+
+classe DetalhePropostaResponse
