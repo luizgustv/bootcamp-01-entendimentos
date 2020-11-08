@@ -29,8 +29,11 @@ http.csrf().disable() //desabilitando a protecao csrf
 ```
 
 Opcionalmente para que as configurações nem sejam iniciadas, podemos no arquivo main onde temos a annotation @SpringBootApplication
-colocar a opção: @SpringBootApplication(exclude = {SecurityAutoConfiguration.class}). Dessa forma, quando a aplicação for iniciada
-essa classe de configuração não será executada.
+colocar a opção: 
+```
+@SpringBootApplication(exclude = {SecurityAutoConfiguration.class});
+```
+Dessa forma, quando a aplicação for iniciada essa classe de configuração não será executada.
 
 Obs.: @SpringBootApplication é uma annotation que é equivalente ao uso dessa outras três em suas configurações padrão:
  - @Configuration: usado para classes que contêm métodos anotados com @Bean. Dessa forma o Spring sabe que deverá gerenciar o ciclo de 
@@ -47,6 +50,7 @@ E sim:
 @Autowired
 Objeto obj;
 ```
+
  - @ComponentScan: procura por Componentes Spring (@Configuration, @Controller,@Services, entre outros);
  - @EnableAutoConfiguration: permite que o Spring configure automaticamente o projeto com base nas dependências jar adicionadas. 
-Por exemplo, se o projeto possui a dependência spring-starter-web, o Spring irá auto-configurar o Tomcat e o Spring MVC;
+Por exemplo, se o projeto possui a dependência spring-starter-web, o Spring irá auto-configurar o Tomcat e o Spring MVC.
