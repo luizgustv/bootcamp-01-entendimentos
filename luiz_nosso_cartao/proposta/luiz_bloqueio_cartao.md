@@ -29,7 +29,8 @@ validar bloqueio?
 - ip?
 
 Verificar se o bloqueio foi feito pelo usuario do cartão
-- @AuthenticationPrincipal - capturar informações de um usuário logado. No caso utilizar com a classe JWT para conseguir visualizar suas
+- @AuthenticationPrincipal - capturar informações de um usuário logado. 
+No caso utilizar com a classe JWT para conseguir visualizar suas
 claims
 
 usar o email como identificação unica do usuário que criou a proposta

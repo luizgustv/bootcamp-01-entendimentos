@@ -26,9 +26,7 @@ proposta_criadas_total{aplicacao="serviço de proposta", ambiente="desenvolvimen
 Métrica tipo Counter - conta quantas vezes um método foi chamado
 Métrica tipo Timer - medir latência de curta duração e frequência de eventos
 
-
-
-Chamar uma classe que realiza métricas seria um aumento de complexidade?
+Chamar uma classe que realiza métricas seria um aumento de complexidade? Não é uma tecnologia transversal à aplicação
 
 
 
